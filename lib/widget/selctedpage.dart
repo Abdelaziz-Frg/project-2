@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:personnel_managment/compenent/color.dart';
 import 'package:personnel_managment/screen/Home%20page/home.dart';
 import 'package:personnel_managment/screen/addpage/Addpreson.dart';
+import 'package:personnel_managment/screen/modeferpage/modifierpage.dart';
 
 class selctedpage extends StatefulWidget {
   int selectedIndex;
@@ -12,11 +13,10 @@ class selctedpage extends StatefulWidget {
 }
 
 class _selctedpageState extends State<selctedpage> {
-
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         NavigationRail(
           extended: false,
@@ -35,6 +35,11 @@ class _selctedpageState extends State<selctedpage> {
                   MaterialPageRoute(builder: (context) => Addpreson()),
                 );
               }
+              if (index == 2) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Modifierpage()),
+                );
+              }
             });
           },
           labelType: NavigationRailLabelType.all,
@@ -50,15 +55,16 @@ class _selctedpageState extends State<selctedpage> {
               label: Text('اضافة عامل'),
             ),
             NavigationRailDestination(
-              icon: Icon(Icons.person_remove_outlined, color: darkGreen),
-              selectedIcon: Icon(Icons.person_remove, color: darkGreen),
-              label: Text('ارشفة عامل'),
-            ),
-            NavigationRailDestination(
               icon: Icon(Icons.edit, color: darkGreen),
               selectedIcon: Icon(Icons.edit_outlined, color: darkGreen),
               label: Text('تعديل'),
             ),
+            NavigationRailDestination(
+              icon: Icon(Icons.person_remove_outlined, color: darkGreen),
+              selectedIcon: Icon(Icons.person_remove, color: darkGreen),
+              label: Text('ارشفة عامل'),
+            ),
+            
           ],
         ),
       ],
